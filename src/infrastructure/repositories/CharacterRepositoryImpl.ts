@@ -28,6 +28,7 @@ export class CharacterRepositoryImpl implements CharacterRepository {
             item.origin,
             item.location,
             item.image,
+            item.episode,
           ),
       ),
       totalPages: response.data.info.pages,

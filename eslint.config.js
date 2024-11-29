@@ -31,4 +31,11 @@ export default [
     ],
   },
   skipFormatting,
+  {
+    files: ['**/*.vue'], // Target Vue files
+    rules: {
+      'vue/multi-word-component-names': 'off', // Disable the rule
+    },
+  },
+
 ]

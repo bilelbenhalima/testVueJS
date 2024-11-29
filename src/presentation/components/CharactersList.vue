@@ -37,7 +37,7 @@ export default defineComponent({
       type: Array as () => Character[],
     },
   },
-  setup(props) {
+  setup() {
     const router = useRouter()
 
     const navigateToCharacter = (characterId: number) => {
