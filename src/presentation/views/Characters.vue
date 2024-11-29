@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="filter-container">
-      <input v-model="search" type="text" placeholder="Search characters..." @input="refetch" />
-      <select v-model="status" @change="refetch">
+      <input v-model="search" type="text" placeholder="Search characters..."  />
+      <select v-model="status" >
         <option value="">All</option>
         <option value="alive">Alive</option>
         <option value="dead">Dead</option>
@@ -11,11 +11,11 @@
     </div>
 
     <CharactersList :characters="characters?.characters" />
-    <div v-if="isLoading" class="loader-container">
-      <div class="loader"></div>
+    <div v-if="isLoading" >
+      <Loder/>
     </div>
-    <div v-if="isError" class="error-container">
-      <img src="../../assets/noData.jpg" alt="no-data" />
+    <div v-if="isError" >
+      <NoData/>
     </div>
     <div v-if="!(isError || isLoading)">
       <Pagination :page="page" :total-pages="characters?.totalPages" @page-change="onPageChange" />
@@ -28,9 +28,11 @@ import { defineComponent, watch, ref } from 'vue'
 import CharactersList from '../components/CharactersList.vue'
 import Pagination from '../components/Pagination.vue'
 import { CharacterService } from '../../application/characters/CharacterService'
+import Loder from '../components/Loder.vue'
+import NoData from '../components/NoData.vue'
 
 export default defineComponent({
-  components: { CharactersList, Pagination },
+  components: { CharactersList, Pagination, Loder,NoData },
   setup() {
     const characterService = new CharacterService()
 
@@ -52,7 +54,6 @@ export default defineComponent({
 
     const onPageChange = (newPage: number) => {
       page.value = newPage
-      refetch()
     }
 
     return {
@@ -84,36 +85,5 @@ select {
   justify-content: center;
   width: 100%;
 }
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid black;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.loader-container {
-  display: flex;
-  justify-content: center;
-  height: 400px;
-}
-.error-container {
-  display: flex;
-  justify-content: center;
-  img {
-    width: 400px;
-    height: auto;
-  }
-}
 </style>

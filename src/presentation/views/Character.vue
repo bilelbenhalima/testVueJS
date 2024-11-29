@@ -4,8 +4,8 @@
       <div class="arrow left"></div>
     </div>
 
-    <div v-if="isLoading">Loading...</div>
-    <div v-if="isError">Error: {{ error.message }}</div>
+    <div v-if="isLoading"><Loder/></div>
+    <div v-if="isError"><NoData/></div>
 
     <div v-if="data">
       <CharacterDetail :character="data" />
@@ -18,9 +18,11 @@ import { defineComponent } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import CharacterDetail from '../components/CharacterDetail.vue'
 import { CharacterService } from '../../application/characters/CharacterService'
+import Loder from '../components/Loder.vue'
+import NoData from '../components/NoData.vue'
 
 export default defineComponent({
-  components: { CharacterDetail },
+  components: { CharacterDetail, Loder, NoData },
 
   setup() {
     const characterService = new CharacterService()

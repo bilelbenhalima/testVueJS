@@ -17,7 +17,6 @@ export default defineComponent({
     },
     totalPages: {
       type: Number,
-      required: true,
     },
   },
   methods: {

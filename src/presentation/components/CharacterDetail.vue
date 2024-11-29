@@ -120,14 +120,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-.episodes ul {
-  list-style: none;
-  padding: 0;
-}
-
-.episodes li {
-  margin: 5px 0;
-}
 
 .episodes a {
   color: #007bff;
@@ -138,7 +130,6 @@ h1 {
   text-decoration: underline;
 }
 
-/* Status classes */
 .status-alive {
   color: green;
   font-weight: bold;
